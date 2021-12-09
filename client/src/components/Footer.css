@@ -1,0 +1,7 @@
+footer {
+    height: 100px;
+    background-color: rgb(53, 124, 91);
+    box-shadow: 0 0 4px black;
+    bottom: 0;
+    clear: both;
+}

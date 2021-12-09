@@ -1,0 +1,44 @@
+.register {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.register * {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.registration-form input {
+    margin: 10px;
+    width: 250px;
+    height: 42px;
+    font-size: 17pt;
+}
+
+.registration-form button {
+    margin: 10px;
+    width: 250px;
+    height: 42px;
+    font-size: 17pt;
+    color: rgb(196, 196, 196);
+    background-color: rgb(40, 95, 70);
+    border: none;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+h1, h2, h3 {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}

@@ -1,0 +1,41 @@
+.navbar {
+    position: relative;
+    width: 100%;
+    height: 80px;
+    background-color: rgb(53, 124, 91);
+    box-shadow: 0 0 4px black;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: rgb(196, 196, 196);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar a {
+    position: relative;
+    padding: 0 15px;
+    font-size: 20pt;
+    margin: 0px;
+    flex: 1 1 auto;
+    text-decoration: none;
+    color: rgb(196, 196, 196);
+    height: 100%;
+    line-height: 300%;
+}
+
+.navbar  a.active {
+    background-color: rgba(255, 255, 255, 0.4);
+    color: rgb(53, 124, 91);
+}
+
+@media screen and (min-width: 760px) {
+    .navbar {
+        justify-content: flex-end;
+    }
+    .navbar a {
+        flex: 0 1 auto;
+    }
+    .navbar a:last-of-type {
+        margin-right: 2em;
+    }
+}

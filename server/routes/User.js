@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const db = require('../config/db');
+const db = require('../config/db'); 
 
 router.post("/register", (req, res) => {
     const username = req.body.username;
