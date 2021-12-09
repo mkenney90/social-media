@@ -14,7 +14,8 @@ function Register() {
     const [errors, setErrors] = useState('');
     const { setLoggedIn, setUser } = useContext(LoginContext);
 
-    const register = async () => {
+    const register = (e) => {
+        e.preventDefault();
         Axios.post("http://localhost:3001/user/register", {
             username: username, 
             password: password,
@@ -35,6 +36,7 @@ function Register() {
 
     const createProfile = () => {
         Axios.post("http://localhost:3001/user/register", {
+            username: username, 
             newUser: false
         }).then((res) => {
             if (res.data.registered) {
@@ -48,6 +50,7 @@ function Register() {
                 setErrors('');
                 navigate('/profile');
             } else {
+                localStorage.clear();
                 setErrors(res.data.message);
             }
         }).catch((err) => {
@@ -58,15 +61,27 @@ function Register() {
     return (
         <div className="register">
             <h2>Sign up below:</h2>
-            <div className="registration-form">
-                <input type="text" placeholder="username" onChange={(event) => (setUsername(event.target.value))} />
-                <input type="password" placeholder="password" onChange={(event) => (setPassword(event.target.value))} />
-                <button type="submit" onClick={register}>Register</button>
-                <span className="register-or-login-minder">Already have an account? <Link to="/Login">Login here.</Link></span>
-                <div className="error-container">
-                    {errors && <h4 className="error-msg">{errors}</h4>}
+            <form onSubmit={register}>
+                <div className="registration-form">
+                    <input 
+                        type="text" 
+                        placeholder="username" 
+                        required
+                        onChange={(event) => (setUsername(event.target.value))} 
+                    />
+                    <input 
+                        type="password" 
+                        placeholder="password" 
+                        required
+                        onChange={(event) => (setPassword(event.target.value))} 
+                    />
+                    <button type="submit" disabled={!username || !password}>Register</button>
+                    <span className="register-or-login-minder">Already have an account? <Link to="/Login">Login here.</Link></span>
+                    <div className="error-container">
+                        {errors && <h4 className="error-msg">{errors}</h4>}
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     )
 }

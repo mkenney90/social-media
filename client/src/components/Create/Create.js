@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { FeedContext, FeedProvider } from "../../context/FeedContext";
+import { FeedContext } from "../../context/FeedContext";
 import Axios from 'axios';
 
 function Create({ setSubmit, userId, placeholder }) {

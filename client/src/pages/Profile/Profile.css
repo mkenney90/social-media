@@ -1,3 +1,7 @@
+.profile-form {
+    position: relative;
+}
+
 .profile-form label {
     display: block;
     width: 20%;

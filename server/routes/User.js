@@ -9,19 +9,29 @@ router.post("/register", (req, res) => {
     const newUser = req.body.newUser;
 
     if (newUser) {
+        console.log("registering")
         db.query(
-            `INSERT INTO users (username, password) VALUES (${username}, ${password})`, 
+            `INSERT INTO users (username, password) VALUES ('${username}', '${password}')`,
             (err, results) => {
-                if (err && err.code === 'ER_DUP_ENTRY') {
-                    res.json({
-                        registered: false, 
-                        message: 'Username already exists.'
-                    })
+                if (err) {
+                    if (err.code === 'ER_DUP_ENTRY') {
+                        res.json({
+                            registered: false, 
+                            message: 'Username already exists.'
+                        })
+                    } else {
+                        console.log(err)
+                        res.json({
+                            registered: false, 
+                            message: 'Something went wrong.' 
+                        })
+                    }
                 } else {
+                    console.log(results);
                     res.json({
-                        registered: true, 
+                        registered: true,
                         username: username,
-                        message: `Registration successful for user ${username}.`
+                        message: `Registration successful for user ${username}.` 
                     })
                 }
             }
@@ -36,7 +46,7 @@ router.post("/register", (req, res) => {
                         registered: false, 
                         message: 'Error registering new user profile.'
                     })
-                    console.log(err.message);
+                    console.log(err.message); 
                 } else {
                     res.json({
                         registered: true, 
@@ -89,7 +99,7 @@ router.post("/getProfileData", (req, res) => {
             if (err) {
                 console.log(err);
             }
-            if (results) {
+            if (results.length) {
                 console.log(results)
                 res.json({
                     id: id,

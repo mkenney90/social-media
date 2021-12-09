@@ -9,7 +9,6 @@ function Feed({ submit, setSubmit, userId }) {
     const { feed, setFeed } = useContext(FeedContext)
 
     const getFeed = async () => {
-        console.log("getting feed")
         setLoading(true);
         Axios.post("http://localhost:3001/user/getFeed", {
         }).then((res) => {

@@ -86,6 +86,13 @@ html, body, #root {
     background-color: rgba(0, 0, 0, .25);
 }
 
+.status-minder {
+    position: absolute;
+    bottom: -2.5em;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 h1, h2, h3 {
     font-family: Mohave, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }

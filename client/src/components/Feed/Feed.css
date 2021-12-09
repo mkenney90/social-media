@@ -44,7 +44,7 @@ p.post-content:before {
     bottom: -1px;
     text-align: center;
     vertical-align: middle;
-    line-height: 200%;
+    line-height: 2.5em;
     background-color: rgba(205, 10, 0, .6);
     color: rgba(100, 10, 0, .9);
     width: 45px;

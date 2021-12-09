@@ -11,6 +11,7 @@ function Profile() {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [occupation, setOccupation] = useState('');
+    const [saved, setSaved] = useState(false);
     const loading = profileData === undefined;
  
     const getProfileData = async () => {
@@ -33,6 +34,7 @@ function Profile() {
             lastName: lastName,
             occupation: occupation,
         }).then(() => {
+            setSaved(true);
             getProfileData();
         }).catch((err) => {
             console.log(err);
@@ -49,6 +51,14 @@ function Profile() {
         }
         // eslint-disable-next-line
     }, [profileData]);
+
+    useEffect(() => {
+        if (saved) {
+            setTimeout(() => {
+                setSaved(false)
+            }, 2000)
+        }
+    }, [saved]);
 
     return (
         <div className="profile-form">
@@ -82,8 +92,9 @@ function Profile() {
                     />
                 </label>
                 <button type="submit" disabled={!firstName || !lastName || !occupation}>Submit Changes</button>
+                {loading && <p className="status-minder">fetching profile data...</p>}
+                {saved && <p className="status-minder">Profile data saved!</p>}
             </form>
-            {loading && <p>fetching profile data...</p>}
         </div>
     )
 }
